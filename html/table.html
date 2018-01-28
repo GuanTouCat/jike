@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态table</title>
+</head>
+<body>
+    <!--<table>-->
+        <!--<tbody>-->
+        <!--<tr>-->
+            <!--<td>hhh</td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
+    <input type="button" value="创建行" name="creat" id="inp1" onclick="creatRows()"/>
+    <input type="button" value="删除行" name="creat" id="inp2" onclick="deleRows()"/>
+
+
+
+    <script type="text/javascript">
+        var input1 =document.getElementById("inp1");
+        var input2 =document.getElementById("inp2");
+
+        //创建表格
+        var table = document.createElement("table");
+        table.border = 1;
+        table.width=1000;
+        //创建tbody
+        var tbody = document.createElement("tbody");
+        table.appendChild(tbody);
+        //创建第一行
+        tbody.insertRow(0);
+        tbody.rows[0].insertCell(0);
+        tbody.rows[0].cells[0].appendChild(document.createTextNode("编号"));
+        tbody.rows[0].insertCell(1);
+        tbody.rows[0].cells[1].appendChild(document.createTextNode("学号"));
+        tbody.rows[0].insertCell(2);
+        tbody.rows[0].cells[2].appendChild(document.createTextNode("姓名"));
+        tbody.rows[0].insertCell(3);
+        tbody.rows[0].cells[3].appendChild(document.createTextNode("年龄"));
+        tbody.rows[0].insertCell(4);
+        tbody.rows[0].cells[4].appendChild(document.createTextNode("操作"));
+        tbody.rows[0].cells[4].appendChild(input1);
+        tbody.rows[0].cells[4].appendChild(input2);
+        //创建第二行
+        tbody.insertRow(1);
+        tbody.rows[1].insertCell(0);
+        tbody.rows[1].cells[0].appendChild(document.createTextNode("01"));
+        tbody.rows[1].insertCell(1);
+        tbody.rows[1].cells[1].appendChild(document.createTextNode("2018012301"));
+        tbody.rows[1].insertCell(2);
+        tbody.rows[1].cells[2].appendChild(document.createTextNode("小明"));
+        tbody.rows[1].insertCell(3);
+        tbody.rows[1].cells[3].appendChild(document.createTextNode("18"));
+        tbody.rows[1].insertCell(4);
+
+
+        document.body.appendChild(table);
+
+        function creatRows() {
+            var newRows = tbody.insertRow(1);
+            newRows.insertCell(0).innerHTML="h";
+            newRows.insertCell(0).innerHTML="h";
+            newRows.insertCell(0).innerHTML="h";
+            newRows.insertCell(0).innerHTML="h";
+            newRows.border =1;
+        }
+        function deleRows() {
+            tbody.deleteRow(1);
+        }
+    </script>
+</body>
+</html>

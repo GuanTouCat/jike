@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>移动的小汽车</title>
+    <style>
+        #car{
+            width: 200px;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="car" >
+        <img src="../asset/img/02.png" width="200" alt="这是小汽车">
+    </div>
+        <input type="button" value="移动" onclick="show()" id="inp1"/>
+        <!--<input type="button" value="向下" id="int2" onclick=""/>-->
+
+    <script type="text/javascript">
+        
+        var stop = document.getElementById("inp1");
+        stop.addEventListener("keypress",function() {
+//            alert("hhh");
+            event.stopPropagation();
+        },false);
+        function move() {
+            var cartoMove = document.getElementById("car");
+            var x = cartoMove.offsetLeft;
+            var y = cartoMove.offsetTop;
+            x += 50;
+//            y += 50;
+            cartoMove.style.left = x + 'px';
+//            cartoMove.style.top = y + 'px';
+        }
+        function show() {
+            setInterval('move()',1000);
+        }
+
+        
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .class1 {
+            width:100px;
+            height:100px;
+            background-color:Blue;
+            position:absolute; left:100px; top:100px;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="mydiv" class="class1" ></div>
+    <input type="button" value="点我" onclick="show();" />
+
+<script type="text/javascript">
+    function dianwo() {
+        var obj = document.getElementById('mydiv');
+        var x = obj.offsetLeft;
+        var y = obj.offsetTop;
+        x += 10;
+//        y += 10;
+        obj.style.left = x;
+//        obj.style.top = y;
+
+    }
+    function show()
+    {
+        setInterval('dianwo()',500);
+    }
+</script>
+</body>
+</html>

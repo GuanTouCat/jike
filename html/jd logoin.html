@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京东注册页面</title>
+    <style>
+        .main{
+            width: 1000px;
+            font-size: 15px;
+            margin: 0 auto;
+        }
+        .myform{
+            margin-bottom: 10px;
+        }
+        .myform input{
+            width: 250px;
+            height: 30px;
+            font-size: 14px;
+        }
+        .myform input[type=checkbox]{
+            width: 15px;
+            height: 15px;
+        }
+        label{
+            width: 150px;
+            display: inline-block;
+        }
+        button{
+            width: 410px;
+            height: 40px;
+        }
+        span{
+            font-size: 15px;
+            color: #cf4646;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <form action="">
+            <div class="myform">
+                <label for="username">*用户名：</label>
+                <input type="text" id="username" name="username">
+                <span id="userTips"></span>
+            </div>
+            <div class="myform">
+                <label for="passw">*请设置密码：</label>
+                <input type="password" id="passw" name="passw">
+                <span id="password"></span>
+            </div>
+            <div class="myform">
+                <label for="passw2">*请确认密码：</label>
+                <input type="password" id="passw2" name="passw2">
+                <span id="password2"></span>
+            </div>
+            <div class="myform">
+                <label for="company1">*公司名称：</label>
+                <input type="text" id="company1" name="company1">
+                <span id="company"></span>
+            </div>
+            <div class="myform">
+                <label>*公司所在地：</label>
+                <select name="" id="address">
+                    <option value>请选择</option>
+                    <option value="北京">北京</option>
+                    <option value="南京">南京</option>
+                </select>
+                <select name="" id="area">
+                    <option value="请选择">请选择</option>
+                    <option value="海淀">海淀</option>
+                    <option value="朝阳">朝阳</option>
+                </select>
+                <span id="address2"></span>
+            </div>
+            <div class="myform">
+                <label>*购买类型/用途：</label>
+                <input type="checkbox"name="checkbox">IT设备
+                <input type="checkbox"name="checkbox">数码通信
+                <input type="checkbox"name="checkbox">办公耗材
+                <input type="checkbox"name="checkbox">大家电
+                <span id="checkbox"></span>
+            </div>
+            <div class="myform">
+                <label for="company1">*联系电话：</label>
+                <input type="text" id="phone" name="phone">
+                <span id="phone2"></span>
+            </div>
+            <button type="button" onclick="checkinp()">立即注册</button>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        function checkinp() {
+            //用户名
+           var username = document.getElementById("username").value;
+           if(/^[a-zA-z0-9_\\-]{4,20}$/.test(username)){
+               document.getElementById("userTips").innerHTML="用户名可用"
+           }else {
+               document.getElementById("userTips").innerHTML="4-20个字符，汉字字母下划线组成"
+           }
+           //密码
+            var password = document.getElementById("passw").value;
+            if(/^[a-zA-z0-9_]{4,20}$/.test(password)){
+                document.getElementById("password").innerHTML="密码格式正确"
+            }else {
+                document.getElementById("password").innerHTML="4-20个字符，字母下划线组成"
+            }
+            //确认密码
+            var password2 = document.getElementById("passw2").value;
+            if (password == password2 && !(password=="" || null)){
+                document.getElementById("password2").innerHTML="密码正确"
+            }else if (isnull(password2)){
+                document.getElementById("password2").innerHTML="请设置密码！"
+            }else {
+                document.getElementById("password2").innerHTML="密码不正确！"
+            }
+            //公司名称
+            var company = document.getElementById("company1").value;
+            if(isnull(company)){
+                document.getElementById("company").innerHTML="公司名不能为空！"
+            }else {
+                document.getElementById("company").innerHTML="正确"
+            }
+            //公司地址
+            var address = document.getElementById("address").value;
+            if(isnull(address)){
+                document.getElementById("address2").innerHTML="请选择公司地址！"
+            }else {
+                document.getElementById("address2").innerHTML="正确"
+            }
+            //购买类型
+            if (checkcheckBox()){
+                document.getElementById("checkbox").innerHTML="ok！"
+            }else {
+                document.getElementById("checkbox").innerHTML="请选择购买类型"
+            }
+            //联系电话
+            var phone = document.getElementById("phone").value;
+            if (/^0?(13|15|18|17|14)[0-9]{9}$/.test(phone)){
+                document.getElementById("phone2").innerHTML="ok！"
+            }else {
+                document.getElementById("phone2").innerHTML="请输入正确手机号"
+            }
+
+            function checkcheckBox() {
+                var checked = document.getElementsByName("checkbox");
+                for (var i in checked){
+                    if (checked[i].checked ==true){
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            //是否为空
+            function isnull(objValue) {
+                return(objValue == "" || null);
+            }
+        }
+    </script>
+</body>
+</html>
