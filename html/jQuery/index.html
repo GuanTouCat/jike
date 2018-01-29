@@ -3,8 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <title>jQuery</title>
+    <style>
+        *{padding: 0;margin: 0}
+        .out{
+            width:730px ;
+            height: 454px;
+            border: 3px solid #000000;
+            margin: 30px auto;
+            position: relative;
+        }
+        .num{
+            font-size: 0;
+            list-style: none;
+            width: 100%;
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            text-align: center;
+        }
+        .num li{
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            font-size: 14px;
+            color:#fff;
+            background: #5e5e5e;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 3px;
+            cursor: pointer;
+        }
+        .img{
+            list-style: none;
+        }
+        .img li{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .btn{
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 60px;
+            background: #5e5e5e;
+            color: #ffffff;
+            font-size: 21px;
+            text-align: center;
+            line-height: 60px;
+            margin-top: -30px;
+            cursor: pointer;
+            display: none;
+        }
+        .out:hover .btn{display: block}
+        .right{
+            right: 0;
+        }
+        .left{
+            left: 0;
+        }
+    </style>
 </head>
 <body>
+    <div class="out">
+        <ul class="img">
+            <li><a href="#"><img src="/asset/img/1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="/asset/img/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="/asset/img/3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="/asset/img/4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="/asset/img/5.jpg" alt=""></a></li>
+        </ul>
+        <ul class="num">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
 
+        <div class="left btn"><</div>
+        <div class="right btn">></div>
+    </div>
+
+
+<script src="/common/jquery/jquery-3.1.1.min.js"></script>
+<script>
+
+</script>
 </body>
 </html>
