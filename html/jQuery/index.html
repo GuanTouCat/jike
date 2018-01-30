@@ -79,11 +79,7 @@
             <li><a href="#"><img src="../../asset/img/5.jpg" alt=""></a></li>
         </ul>
         <ul class="num">
-            <li class="active">1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
+
         </ul>
 
         <div class="left btn"><</div>
@@ -94,15 +90,25 @@
 <script src="/common/jquery/jquery-3.1.1.min.js"></script>
 <script>
     $(function () {
+        //插入序列号
+        var size = $(".img li").length;
+        for(var j=1; j<=size; j++){
+            var li ="<li>"+j+"</li>";
+            $(".num").append(li);
+        }
+
+
+
         $(".img li").first().show();
+        $(".num li").first().addClass("active");
         //手动轮播图片
         $(".num li").mouseover(function () {
             $(this).addClass("active").siblings().removeClass("active");
             var index = $(this).index();
-            $(".img li").eq(index).fadeIn(300).siblings().fadeOut(300);
+            i = index;
+            $(".img li").eq(index).stop().fadeIn(300).siblings().stop().fadeOut(300);
         });
 
-        //左右按钮
 
         //自动轮播图片
         var i=0;
@@ -115,7 +121,7 @@
                 i=0;
             }
             $(".num li").eq(i).addClass("active").siblings().removeClass("active");
-            $(".img li").eq(i).fadeIn().siblings().fadeOut();
+            $(".img li").eq(i).fadeIn(300).siblings().fadeOut(300);
         }
         //核心向左运动函数
         function remove() {
