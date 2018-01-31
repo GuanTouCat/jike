@@ -14,21 +14,29 @@ a{
     background: #222222;
     margin-top: 100px;
 }
-.navlist{
+.list{
     width: 1000px;
     height: 40px;
     margin: 0 auto;
 }
-.navlist li{
+.list li{
     float: left;
 }
-.navlist li a{
+.list li a{
     padding: 0 30px;
     color: #aaa;
     line-height: 40px;
     display: block;
 }
-.navlist li a:hover{
+.list li a.on{
     color: #ffffff;
     background: #333;
+}
+.list li a:hover{
+    color: #ffffff;
+    background: #333;
+}
+h1{
+    text-align: center;
+    padding-top: 200px;
 }
