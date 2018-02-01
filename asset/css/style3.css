@@ -30,12 +30,12 @@ a{
     display: block;
 }
 .nav li:hover>a{
-    background: #aaaaaa;
+    background: #333;
     color: #ffffff;
 }
-.nav li:hover .down{
-    display: block;
-}
+/*.nav li:hover .down{*/
+    /*display: block;*/
+/*}*/
 .down{
     width: 150px;
     background: #222222;
@@ -51,4 +51,8 @@ a{
     font-size: 14px;
     padding: 5px 30px;
 
+}
+.down a:hover{
+    color: #ffffff;
+    background: #333;
 }
