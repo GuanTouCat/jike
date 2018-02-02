@@ -34,43 +34,40 @@
                 $(".num").append("<li></li>")
             }
 
-
             $(".num li").first().addClass("on");
-            //向左轮播运动函数
-            function moveL() {
-                i++;
+            //核心运动函数
+            function move() {
+
                 if(i==size){
                     $(".img").css({left:0});
                     i=1;
                 }
-                $(".img").stop().animate({left:-i*730});
-                //最后序列号转移到第一个
+            //最后序列号样式转移到第一个
                 if(i==size-1){
                     $(".num li").eq(0).addClass("on").siblings().removeClass("on")
                 }
+
+                if(i==-1){
+                    $(".img").css({left:-(size-1)*730});
+                    i=size-2;
+
+                }
+                $(".img").stop().animate({left:-i*730});
                 $(".num li").eq(i).addClass("on").siblings().removeClass("on");
             }
             //向左按钮
             $(".btn_l").click(function () {
-                moveL();
+                i++;
+                move();
             });
 
-            //向右轮播运动函数
-            function moveR() {
-                i--;
-                if(i==-1){
-                    $(".img").css({left:-(size-1)*730});
-                    i=size-2;
-                }
-                $(".img").stop().animate({left:-i*730});
-                $(".num li").eq(i).addClass("on").siblings().removeClass("on");
-            }
             //向右按钮
             $(".btn_r").click(function () {
-                moveR()
+                i--;
+                move()
             });
 
-            //手动滑入序列按钮轮播
+            //鼠标滑入滑出序列
             $(".num li").hover(function () {
                 var index=$(this).index();
                 i=index;
@@ -79,12 +76,18 @@
 
             });
             //自动轮播
-            var t =setInterval(moveL,1500);
+            var t =setInterval(function () {
+                i++;
+                move();
+            },1500);
             //鼠标滑入滑出图片停止/自动轮播
             $(".banner").hover(function () {
                 clearInterval(t);
             },function () {
-                t =setInterval(moveL,1500);
+                t =setInterval(function () {
+                    i++;
+                    move();
+                },1500);
             })
 
         })

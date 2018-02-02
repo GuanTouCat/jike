@@ -61,6 +61,10 @@ a{
     font-size: 40px;
     font-family: "宋体";
     cursor: pointer;
+    display: none;
+}
+.banner:hover .btn{
+    display: block;
 }
 .btn_l{
     left: 0;
