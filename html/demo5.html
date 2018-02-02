@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无缝轮播</title>
+    <link rel="stylesheet" href="../asset/css/style5.css">
+</head>
+<body>
+    <div class="banner">
+        <ul class="img">
+            <li><a href=""><img src="../asset/img/1.jpg" alt=""></a></li>
+            <li><a href=""><img src="../asset/img/2.jpg" alt=""></a></li>
+            <li><a href=""><img src="../asset/img/3.jpg" alt=""></a></li>
+            <li><a href=""><img src="../asset/img/4.jpg" alt=""></a></li>
+        </ul>
+        <ul class="num">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <div class="btn btn_l">&lt;</div>
+        <div class="btn btn_r">&gt;</div>
+    </div>
+
+    <script type="text/javascript" src="../common/jquery/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            var i=0;
+            var size =$(".img li").length;
+            $(".num li").first().addClass("on");
+            $(".btn_l").click(function () {
+                i++;
+                if(i==size){
+                    i=0;
+                }
+                $(".img").animate({left:-i*730});
+                $(".num li").eq(i).addClass("on").siblings().removeClass("on");
+            });
+
+            $(".btn_r").click(function () {
+                i--;
+                if(i==-1){
+                    i=size-1;
+                }
+                $(".img").animate({left:-i*730});
+                $(".num li").eq(i).addClass("on").siblings().removeClass("on");
+            });
+        })
+    </script>
+</body>
+</html>
