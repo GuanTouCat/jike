@@ -14,10 +14,7 @@
             <li><a href=""><img src="../asset/img/4.jpg" alt=""></a></li>
         </ul>
         <ul class="num">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+
         </ul>
 
         <div class="btn btn_l">&lt;</div>
@@ -29,25 +26,67 @@
         $(function () {
 
             var i=0;
+            var  clone = $(".img li").first().clone();
+            $(".img").append(clone);
             var size =$(".img li").length;
+            //添加序列
+            for(var j=0;j<size-1;j++){
+                $(".num").append("<li></li>")
+            }
+
+
             $(".num li").first().addClass("on");
-            $(".btn_l").click(function () {
+            //向左轮播运动函数
+            function moveL() {
                 i++;
                 if(i==size){
-                    i=0;
+                    $(".img").css({left:0});
+                    i=1;
                 }
-                $(".img").animate({left:-i*730});
+                $(".img").stop().animate({left:-i*730});
+                //最后序列号转移到第一个
+                if(i==size-1){
+                    $(".num li").eq(0).addClass("on").siblings().removeClass("on")
+                }
                 $(".num li").eq(i).addClass("on").siblings().removeClass("on");
+            }
+            //向左按钮
+            $(".btn_l").click(function () {
+                moveL();
             });
 
-            $(".btn_r").click(function () {
+            //向右轮播运动函数
+            function moveR() {
                 i--;
                 if(i==-1){
-                    i=size-1;
+                    $(".img").css({left:-(size-1)*730});
+                    i=size-2;
                 }
-                $(".img").animate({left:-i*730});
+                $(".img").stop().animate({left:-i*730});
                 $(".num li").eq(i).addClass("on").siblings().removeClass("on");
+            }
+            //向右按钮
+            $(".btn_r").click(function () {
+                moveR()
             });
+
+            //手动滑入序列按钮轮播
+            $(".num li").hover(function () {
+                var index=$(this).index();
+                i=index;
+                $(".img").stop().animate({left:-index*730});
+                $(this).addClass("on").siblings().removeClass("on");
+
+            });
+            //自动轮播
+            var t =setInterval(moveL,1500);
+            //鼠标滑入滑出图片停止/自动轮播
+            $(".banner").hover(function () {
+                clearInterval(t);
+            },function () {
+                t =setInterval(moveL,1500);
+            })
+
         })
     </script>
 </body>
